@@ -1,26 +1,34 @@
 import React from 'react'
-import { Typography, Button, ButtonGroup } from '@material-ui/core'
+import { Typography, Button, ButtonGroup, Container } from '@material-ui/core'
+import AcUnitIcon from '@material-ui/icons/AcUnit';
+import SendIcon from '@material-ui/icons/Send';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 export default function Create() {
   return (
-    <div>
+    <Container>
       <Typography
-      variant='h6'
-      component='h2'
-      gutterBottom
-      color='textSecondary'
+        variant='h6'
+        component='h2'
+        gutterBottom
+        color='textSecondary'
+
       >
         This is a new Create page
       </Typography>
-      <Button variant='contained' color='primary' type='submit'>Submit</Button>
-      <Button variant='outlined' color='primary' type='submit'>Submit</Button>
-      <Button variant='text' color='primary' type='submit'>Submit</Button>
-      <ButtonGroup color='primary'>
-        <Button>one</Button>
-        <Button>two</Button>
-        <Button>three</Button>
-      </ButtonGroup> 
-      <Button onClick={ () => console.log('I am clicked') }>consol log</Button>
-    </div>
+
+      <Button
+        variant='contained'
+        endIcon={<ArrowForwardIosIcon />}
+        onClick={() => console.log('I am clicked')
+        }>consol log</Button>
+      <br />
+      <AcUnitIcon />
+      <AcUnitIcon color='secondary' fontSize='large' />
+      <AcUnitIcon color='secondary' fontSize='small' />
+      <AcUnitIcon color='action' fontSize='small' />
+      <AcUnitIcon color='error' fontSize='small' />
+      <AcUnitIcon color='disabled' fontSize='small' />
+    </Container>
   )
 }
