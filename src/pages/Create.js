@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Typography, Button, makeStyles, Container, TextField } from '@material-ui/core'
+import { FormControl, FormLabel } from '@material-ui/core'
+import { Typography, Button, makeStyles, Container, TextField, Radio, RadioGroup, FormControlLabel } from '@material-ui/core'
 import AcUnitIcon from '@material-ui/icons/AcUnit';
 import SendIcon from '@material-ui/icons/Send';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
@@ -20,6 +21,7 @@ export default function Create() {
   let [detail, setDetail] = useState('')
   let [titleError, setTittleError] = useState(false)
   let [detailError, setDetailError] = useState(false)
+  let [category, setCategory] = useState('money')
 
 
   let handleSubmit = (e) => {
@@ -28,16 +30,16 @@ export default function Create() {
     setTittleError(false)
     setDetailError(false)
 
-    if ( title === '' ) {
+    if (title === '') {
       setTittleError(true)
     }
 
-    if ( detail === '' ) {
+    if (detail === '') {
       setDetailError(true)
     }
 
-    if ( title && detail ) {
-      console.log('OKkk')
+    if (title && detail) {
+      console.log(category)
     }
 
   }
@@ -54,7 +56,7 @@ export default function Create() {
         This is a new Create page
       </Typography>
 
-      <form noValidate autoComplete='off' onSubmit={ handleSubmit }>
+      <form noValidate autoComplete='off' onSubmit={handleSubmit}>
         <TextField
           onChange={(e) => setTitle(e.target.value)}
           className={classes.field}
@@ -62,7 +64,7 @@ export default function Create() {
           variant='outlined'
           fullWidth
           required
-          error={ titleError }
+          error={titleError}
         />
         <TextField
           onChange={(e) => setDetail(e.target.value)}
@@ -73,10 +75,18 @@ export default function Create() {
           variant='outlined'
           fullWidth
           required
-          error={ detailError }
+          error={detailError}
         />
 
-
+        <FormControl className={ classes.field }>
+          <FormLabel>Note Category</FormLabel>
+            <RadioGroup value={category} onChange={(e) => setCategory(e.target.value)}>
+              <FormControlLabel control={<Radio />} label='Money' value='money' />
+              <FormControlLabel control={<Radio />} label='Sport' value='sport' />
+              <FormControlLabel control={<Radio />} label='Music' value='music' />
+              <FormControlLabel control={<Radio />} label='Hobby' value='hobby' />
+            </RadioGroup>
+        </FormControl>
 
         <Button
           className={classes.btn}
