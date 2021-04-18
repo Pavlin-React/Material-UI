@@ -56,7 +56,7 @@ export default function Create() {
   return (
     <Container>
       <Typography
-        variant='h6'
+        variant='h4'
         component='h2'
         gutterBottom
         color='textSecondary'
