@@ -4,6 +4,7 @@ import { Typography, Button, makeStyles, Container, TextField, Radio, RadioGroup
 import AcUnitIcon from '@material-ui/icons/AcUnit';
 import SendIcon from '@material-ui/icons/Send';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import { useHistory } from 'react-router';
 
 let useStyles = makeStyles({
   field: {
@@ -16,9 +17,12 @@ let useStyles = makeStyles({
 
 export default function Create() {
 
+  let history = useHistory()
+
+
   let classes = useStyles()
   let [title, setTitle] = useState('')
-  let [detail, setDetail] = useState('')
+  let [details, setDetail] = useState('')
   let [titleError, setTittleError] = useState(false)
   let [detailError, setDetailError] = useState(false)
   let [category, setCategory] = useState('money')
@@ -34,12 +38,17 @@ export default function Create() {
       setTittleError(true)
     }
 
-    if (detail === '') {
+    if (details === '') {
       setDetailError(true)
     }
 
-    if (title && detail) {
-      console.log(category)
+    if (title && details) {
+      fetch('http://localhost:8000/notes', {
+        method: 'Post',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify( { title, details, category } )
+      }).then( () => history.push('/') )
+
     }
 
   }
