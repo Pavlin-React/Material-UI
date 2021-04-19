@@ -1,7 +1,7 @@
 import { makeStyles, Drawer, Typography } from "@material-ui/core";
 import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 import { AddCircleOutlineOutlined, SubjectOutlined } from "@material-ui/icons";
-import { AppBar, Toolbar } from '@material-ui/core'
+import { AppBar, Toolbar, Avatar } from '@material-ui/core'
 import { useHistory, useLocation } from 'react-router'
 import { format } from 'date-fns'
 
@@ -36,6 +36,9 @@ let useStyle = makeStyles(( theme ) => {
     toolbar: theme.mixins.toolbar,
     date: {
       flexGrow: 1
+    },
+    avatar: {
+      marginLeft: theme.spacing( 2 )
     }
   }
 })
@@ -70,6 +73,7 @@ const Layout = ({ children }) => {
           <Typography>
             Mario
           </Typography>
+          <Avatar className={ classes.avatar } src='https://i.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U' />
         </Toolbar>
       </AppBar>
       <Drawer
