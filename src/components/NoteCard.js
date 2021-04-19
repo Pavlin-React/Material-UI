@@ -1,11 +1,24 @@
-import { Card, CardHeader, CardContent, IconButton, Typography } from '@material-ui/core'
+import { Card, CardHeader, CardContent, IconButton, Typography, makeStyles } from '@material-ui/core'
 import { DeleteOutlined } from '@material-ui/icons'
+
+let useStyle = makeStyles( {
+  test: {
+    border: ( note ) => {
+      if ( note.category === 'work' ) {
+        return '1px solid red'
+      }
+    }
+  }
+} )
 
 
 const NoteCard = ({ note, handleDelete }) => {
+
+  let classes = useStyle( note )
+
   return (
     <div>
-      <Card elevation={ 1 }>
+      <Card elevation={ 1 } className={ classes.test }>
         <CardHeader 
           action={
             <IconButton onClick={ () => handleDelete( note.id ) }>
